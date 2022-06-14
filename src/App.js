@@ -6,6 +6,10 @@ import {
   Link
 } from "react-router-dom";
 
+import Movies from './components/Movies'
+import Admin from './components/Admin'
+import Home from './components/Home'
+
 export default function App() {
   return (
     <Router>
@@ -47,16 +51,4 @@ export default function App() {
       </div>
     </Router>
   );
-}
-
-function Movies() {
-  return <h2>Movies</h2>
-}
-
-function Home() {
-  return <h2>Home</h2>
-}
-
-function Admin() {
-  return <h2>Admin</h2>
 }
