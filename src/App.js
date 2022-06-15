@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { BrowserRouter as Router, Routes, Route, Link, useParams } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useParams, useMatch } from "react-router-dom";
 
 import Movies from './components/Movies'
 import Admin from './components/Admin'
@@ -28,6 +28,9 @@ export default function App() {
                   <Link to="/movies">Movies</Link>
                 </li>
                 <li className='list-group-item'>
+                  <Link to="/by-category">Categories</Link>
+                </li>
+                <li className='list-group-item'>
                   <Link to="/admin">Manage Catalogue</Link>
                 </li>
               </ul>
@@ -36,8 +39,9 @@ export default function App() {
 
           <div className='col-md-10'>
             <Routes>
-              <Route path="/movies/:id" element={<Movie/>}/>
+              <Route path="/movies/:id" element={<Movie />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/by-category/*" element={<CategoryPage />} />
               <Route path="/movies" element={<Movies />} />
               <Route path="/" element={<Home />} />
             </Routes>
@@ -49,9 +53,20 @@ export default function App() {
   );
 }
 
-function Movie(){
+function Movie() {
 
   let { id } = useParams()
 
   return <h2> Movie id = {id}</h2>
+}
+
+function CategoryPage() {
+  return (
+    <div>
+      <h2>Categories</h2>
+      <ul>
+        <li><Link to="comedy">Comedy</Link></li>
+        <li><Link to="drama">Drama</Link></li>
+      </ul>
+    </div>)
 }
