@@ -1,9 +1,10 @@
 import React, { Fragment } from "react";
-import { BrowserRouter as Router, Routes, Route, Link, useParams, useMatch } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useParams, useMatch, useRoutes, useLocation } from "react-router-dom";
 
 import Movies from './components/Movies'
 import Admin from './components/Admin'
 import Home from './components/Home'
+import Categories from "./components/Categories";
 
 export default function App() {
   return (
@@ -41,7 +42,9 @@ export default function App() {
             <Routes>
               <Route path="/movies/:id" element={<Movie />} />
               <Route path="/admin" element={<Admin />} />
-              <Route path="/by-category/*" element={<CategoryPage />} />
+              <Route path="/by-category/drama" element={<Categories title ="drama" />}/>
+              <Route path="/by-category/comedy" element={<Categories title ="comedy" />}/>
+              <Route path="/by-category/*" element={<CategoryPage />}/>
               <Route path="/movies" element={<Movies />} />
               <Route path="/" element={<Home />} />
             </Routes>
